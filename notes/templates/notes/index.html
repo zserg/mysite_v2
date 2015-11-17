@@ -1,0 +1,25 @@
+{% extends "notes/base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+    {% if notes %}
+        {% for unit in notes %}
+            <div id='note'>
+              <div id='note-title'>
+                <a href="{% url 'note' unit.id %}">@{{unit.title}}</a></div>
+              {{unit.contents}}
+              <div id='tags'>
+                {% for i in unit.tag %} #{{i}} {% endfor %}
+              </div>
+              <div id='note-date'>{{unit.published}}</div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>No notes are available.</p>
+    {% endif %}
+
+{% endblock %}
+
+
+

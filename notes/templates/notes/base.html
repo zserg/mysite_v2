@@ -1,0 +1,35 @@
+{% extends 'bootstrap3/bootstrap3.html' %}
+
+{% load url from future %}
+
+{% load bootstrap3 %}
+
+{% block bootstrap3_content %}
+
+<style>
+#note {
+    background-color:#E0F8F7;
+    color:black;
+    margin-top: 2px;
+    border-radius: 10px;
+}
+</style>
+
+
+<div class="container">
+ <h1>{% block title %}Notepad{% endblock %}</h1>
+ 
+ <ul class="nav nav-pills">
+     <li role="presentation" class="active"><a href="/notes/">Home</a></li>
+     <li role="presentation"><a href="/notes/post"#>NewPost</a></li>
+ </ul>
+  {% bootstrap_messages %}
+
+  {% block content %} {% endblock %}
+
+</div>
+
+{% endblock %}
+
+
+

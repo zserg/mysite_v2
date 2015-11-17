@@ -1,0 +1,25 @@
+{% extends "notes/base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+      {% if note %}
+              <div id='note'>
+                  <div id='note-title'>
+                    <a href="{% url 'note' note.id %}">@{{note.title}}</a></div>
+                    {{note.contents}}
+                    <div id='tags'>
+                       {% for i in note.tag %} #{{i}} {% endfor %}
+                    </div>
+                  <div id='note-date'>{{note.published}}</div>
+              </div>
+              <a class="btn btn-default" href="{% url 'delete' note.id %}" role="button" 
+              onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+          {% else %}
+              <p>No notes are available.</p>
+      {% endif %}
+  
+  {% endblock %}
+
+
+
