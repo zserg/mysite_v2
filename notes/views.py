@@ -22,7 +22,8 @@ class Note:
 
 def get_all_notes():
     es = Elasticsearch("s3.zserg.net:9200")
-    res = es.search(index="notes", body={"query": {"match_all": {}}})
+    res = es.search(index="notes", body={"query": {"match_all": {}}, 'sort': [{'published': 'desc'}]})
+
     notes = []
     for n in res['hits']['hits']:
         src = n['_source']
@@ -48,7 +49,7 @@ def get_one_notes(id):
 
 def parse_note(text):
     re_tags = r'#([^\s]+)'
-    re_title = r'#([^\s]+)'
+    re_title = r'@([^\s]+)'
     tags = re.findall(re_tags,text)
     stat = re.search(re_title,text,re.I|re.M)
     if stat:

@@ -3,7 +3,7 @@ from elasticsearch import Elasticsearch
 import re
 import sys
 
-server = 's2.zserg.net:9200'
+server = 's3.zserg.net:9200'
 
 def noteparser(text):
     re_tags = r'#([^\s]+)'
